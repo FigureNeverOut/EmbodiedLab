@@ -1,0 +1,24 @@
+experiment:
+  name: domino_puma_candidate
+  seed: 42
+
+tasks:
+  count: 34
+  episodes_per_task: 100
+  excluded_tasks:
+    - kitchenpot
+
+training:
+  global_batch_size: 256
+  learning_rate: 0.0001
+  max_steps: 100000
+  gradient_checkpointing: true
+
+loss:
+  action_weight: 1.0
+  world_weight: 0.25
+
+model:
+  backend: qwen_compatible_vlm
+  action_token: "<ACTION>"
+  world_token: "<WORLD>"

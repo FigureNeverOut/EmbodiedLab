@@ -1,0 +1,21 @@
+experiment:
+  name: domino_puma_baseline
+  seed: 42
+
+tasks:
+  count: 34
+  episodes_per_task: 100
+
+training:
+  global_batch_size: 128
+  learning_rate: 0.0001
+  max_steps: 100000
+
+loss:
+  action_weight: 1.0
+  world_weight: 0.1
+
+model:
+  backend: baseline_vlm
+  action_token: "<ACTION>"
+  world_token: "<WORLD>"

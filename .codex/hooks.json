@@ -1,0 +1,18 @@
+{
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash|apply_patch|Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"F:/AI/codex_project/project1/.codex/hooks/enforce_workspace.py\"",
+            "commandWindows": "python \"F:\\AI\\codex_project\\project1\\.codex\\hooks\\enforce_workspace.py\"",
+            "timeout": 10,
+            "statusMessage": "检查写入路径是否位于项目根目录内"
+          }
+        ]
+      }
+    ]
+  }
+}

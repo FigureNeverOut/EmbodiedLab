@@ -1,0 +1,44 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+venv/
+
+# IDE and OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Local temporary and generated files
+tmp/
+outputs/
+.codex/hook-logs/
+
+# Local/private data. Keep directory documentation with !data/README.md.
+data/*
+!data/README.md
+
+# Models, checkpoints, videos, and experiment artifacts
+*.ckpt
+*.pt
+*.pth
+*.safetensors
+*.onnx
+*.mp4
+*.avi
+*.mov
+wandb/
+runs/
+checkpoints/
+
+# Secrets and local configuration
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+secrets/
