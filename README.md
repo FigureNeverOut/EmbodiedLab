@@ -32,6 +32,12 @@ python -m pytest
 
 更详细的 MVP 边界见 [`docs/MVP.md`](docs/MVP.md)。
 
+## 项目文档
+
+- [`docs/MVP.md`](docs/MVP.md)：第一条纵向功能的范围和设计；
+- [`docs/ROADMAP.md`](docs/ROADMAP.md)：当前完成度、版本目标和开发顺序；
+- [`docs/GIT_WORKFLOW.md`](docs/GIT_WORKFLOW.md)：本项目日常 Git/GitHub 操作流程。
+
 ## 为什么做这个项目
 
 具身智能实验常见的问题并不只来自模型本身，还可能来自：
@@ -143,5 +149,7 @@ project1/
 - [x] 建立 Python 项目骨架
 - [x] 实现配置比较核心逻辑和命令行入口
 - [x] 添加合成实验配置和自动化测试
+- [x] 建立 GitHub Public 仓库和 SSH 443 同步流程
+- [x] 整理 Git 工作流和后续路线图
 - [ ] 实现第一个配置比较页面
 - [ ] 添加日志指标解析

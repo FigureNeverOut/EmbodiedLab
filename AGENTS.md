@@ -20,6 +20,7 @@
 - 可以只读访问用户明确提供的外部文件，但处理结果必须写回项目根目录内。
 - 临时文件使用 `tmp/`；项目数据使用 `data/`；生成报告使用 `outputs/`；不要把临时产物放到 C 盘。
 - 必须写入 Codex、Git 或其他工具的用户级配置时，先说明原因和具体位置。
+- 除根目录必须保留的 `README.md` 和 `AGENTS.md` 外，新建 Markdown 文档统一放在 `docs/` 目录或其子目录中。
 
 ## 数据与隐私
 
@@ -45,10 +46,13 @@
 
 ## Git 与 GitHub
 
+- 进行 Git 操作前先阅读 `docs/GIT_WORKFLOW.md`，按其中的开始工作、验证、提交和推送流程执行。
 - 可以在本地创建分支和提交，但不得覆盖或丢弃用户已有改动。
 - 未经用户明确确认，不得把仓库发布为公开仓库，不得向远程仓库推送。
 - 第一次连接 GitHub 前，先检查待提交文件中是否包含隐私、密钥、公司资料或大文件。
 - 提交信息使用简洁英文，例如 `docs: add project overview`、`feat: add experiment config diff`。
+- 当前网络必须通过 `ssh.github.com:443` 访问 GitHub；不得把 `origin` 改回 HTTPS，也不得删除仓库级 `core.sshCommand` 配置。
+- 每次推送后确认 `git status --short --branch` 显示本地分支与 `origin/main` 同步。
 
 ## 文档优先
 
