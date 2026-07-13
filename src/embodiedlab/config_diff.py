@@ -56,13 +56,27 @@ def load_config(path: str | Path) -> dict[str, Any]:
         raise FileNotFoundError(f"Configuration file does not exist: {config_path}")
 
     text = config_path.read_text(encoding="utf-8")
+    return load_config_text(text, config_path.name)
+
+
+def load_config_text(text: str, source_name: str) -> dict[str, Any]:
+    """Load configuration text using the extension in ``source_name``.
+
+    This entry point lets the web UI parse uploaded files without first writing
+    them to disk, while keeping validation identical to the command-line path.
+    """
+    suffix = Path(source_name).suffix.lower()
+    if suffix not in SUPPORTED_SUFFIXES:
+        supported = ", ".join(sorted(SUPPORTED_SUFFIXES))
+        raise ValueError(f"Unsupported config type {suffix!r}; expected one of: {supported}")
+
     try:
         if suffix == ".json":
             loaded = json.loads(text)
         else:
             loaded = yaml.safe_load(text)
     except (json.JSONDecodeError, yaml.YAMLError) as exc:
-        raise ValueError(f"Unable to parse {config_path.name}: {exc}") from exc
+        raise ValueError(f"Unable to parse {source_name}: {exc}") from exc
 
     if loaded is None:
         return {}

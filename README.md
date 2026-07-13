@@ -2,11 +2,27 @@
 
 EmbodiedLab 是一个面向 VLA、WAM 和机器人动态物体操作实验的本地诊断与学习闭环平台。它的目标不是在个人电脑上训练大模型，而是帮助研究者把“读论文、配置实验、检查日志、分析失败、安排下一步”连成一套可复现流程。
 
-当前仓库已经完成第一条可运行功能：比较两份 JSON/YAML 实验配置，并生成 Markdown 或 JSON 差异报告。
+当前仓库已经完成第一条可展示功能：通过本地 Web 页面或命令行比较两份 JSON/YAML 实验配置，并生成 Markdown 或 JSON 差异报告。
+
+![EmbodiedLab 配置比较界面](docs/images/config-diff-ui.png)
 
 ## 快速体验
 
-在项目根目录运行：
+安装项目和开发依赖：
+
+```powershell
+python -m pip install -e ".[dev]"
+```
+
+启动本地 Web 页面：
+
+```powershell
+python -m streamlit run streamlit_app.py
+```
+
+浏览器会打开 `http://localhost:8501`。页面可以直接使用公开示例，也可以上传两份 JSON/YAML 配置，筛选差异并下载报告。
+
+也可以使用命令行：
 
 ```powershell
 $env:PYTHONPATH = "src"
@@ -151,5 +167,6 @@ project1/
 - [x] 添加合成实验配置和自动化测试
 - [x] 建立 GitHub Public 仓库和 SSH 443 同步流程
 - [x] 整理 Git 工作流和后续路线图
-- [ ] 实现第一个配置比较页面
+- [x] 实现第一个配置比较页面
+- [x] 添加 UI smoke test、界面截图和 GitHub Actions
 - [ ] 添加日志指标解析

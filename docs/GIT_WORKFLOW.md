@@ -13,7 +13,7 @@ origin = ssh://git@ssh.github.com:443/FigureNeverOut/EmbodiedLab.git
 仓库级 Git 配置已经指定专用密钥：
 
 ```text
-C:\Users\2216113152\.ssh\embodiedlab_github
+%USERPROFILE%\.ssh\embodiedlab_github
 ```
 
 该密钥是只绑定 `FigureNeverOut/EmbodiedLab` 的可写 deploy key。不要把私钥复制到项目目录、GitHub、聊天内容或其他电脑。
@@ -124,7 +124,7 @@ https://github.com/FigureNeverOut/EmbodiedLab
 不要关闭主机验证。先检查 GitHub 官方主机指纹，再检查：
 
 ```powershell
-ssh-keygen -F "[ssh.github.com]:443" -f C:\Users\2216113152\.ssh\known_hosts
+ssh-keygen -F "[ssh.github.com]:443" -f "$env:USERPROFILE\.ssh\known_hosts"
 ```
 
 ### `Permission denied (publickey)`
@@ -133,7 +133,7 @@ ssh-keygen -F "[ssh.github.com]:443" -f C:\Users\2216113152\.ssh\known_hosts
 
 ```powershell
 git config --get core.sshCommand
-Test-Path C:\Users\2216113152\.ssh\embodiedlab_github
+Test-Path "$env:USERPROFILE\.ssh\embodiedlab_github"
 ```
 
 不要重新生成或覆盖现有密钥。需要更换时，先在 GitHub 仓库 Settings - Deploy keys 中删除旧 key，再配置新 key。

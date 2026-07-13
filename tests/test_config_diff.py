@@ -10,6 +10,7 @@ import pytest
 from embodiedlab.config_diff import (
     compare_configs,
     load_config,
+    load_config_text,
     render_json,
     render_markdown,
     resolve_safe_output,
@@ -78,6 +79,17 @@ def test_non_mapping_root_is_rejected() -> None:
             load_config(path)
     finally:
         path.unlink(missing_ok=True)
+
+
+def test_load_uploaded_config_text() -> None:
+    assert load_config_text("seed: 42\n", "uploaded.yaml") == {"seed": 42}
+    assert load_config_text('{"seed": 7}', "uploaded.json") == {"seed": 7}
+
+    with pytest.raises(ValueError, match="Unable to parse uploaded.yaml"):
+        load_config_text("training: [", "uploaded.yaml")
+
+    with pytest.raises(ValueError, match="Unsupported config type"):
+        load_config_text("seed = 42", "uploaded.toml")
 
 
 def test_reports_contain_summary_and_paths() -> None:
