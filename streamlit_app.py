@@ -137,6 +137,16 @@ def render_app() -> None:
         show_unchanged = st.checkbox(
             "包含未变化字段", value=False, key="show_unchanged"
         )
+        previously_showed_unchanged = st.session_state.get(
+            "_previous_show_unchanged", False
+        )
+        if show_unchanged and not previously_showed_unchanged:
+            selected = st.session_state.get(
+                "status_filter", ["Changed", "Added", "Removed"]
+            )
+            st.session_state.status_filter = [*selected, "Unchanged"]
+        st.session_state._previous_show_unchanged = show_unchanged
+
         available_statuses = ["changed", "added", "removed"]
         if show_unchanged:
             available_statuses.append("unchanged")
